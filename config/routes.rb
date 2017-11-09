@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'login' => 'users#new', :as => :login
+
   get 'home' => 'static_pages#home', :as => :home
   get 'help' => 'static_pages#help', :as => :help
   get 'about' => 'static_pages#about', :as => :about
