@@ -31,3 +31,14 @@
 
 en:
   hello: "Hello world"
+
+  authentication_payload:
+    client_id: "client_id"
+    client_secret: "client_secret"
+    username: "username"
+    password: "password"
+    grant_type: "grant_type"
+
+  client_id: "61255480307354ebd4d094482f2483adec9942637979aa5c3963ecbac469f943"
+  client_secret: "926e632b2aa9758f60dbdf2f8de13bebd9a04dfd602de4c257b3f8b4a97cf0b8"
+
