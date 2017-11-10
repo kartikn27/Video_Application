@@ -1,8 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
-  def hello
-    render html: "hello, world!"
-  end
-
+  add_flash_types :success, :warning, :danger, :info
+  include SessionsHelper
 end
