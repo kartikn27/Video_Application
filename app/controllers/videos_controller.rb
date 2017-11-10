@@ -13,8 +13,11 @@ class VideosController < ApplicationController
                         'thumbnail' => video['thumbnails'][1]['url'],
                         'subscription_required' => video['subscription_required']})
     end
-    logger.info(@video_info)
+  end
 
+  def show
+    @video_id = params[:id]
+    logger.info(@video_id)
   end
 
 end

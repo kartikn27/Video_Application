@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   # Videos Controller Routes #
   get '/videos' => 'videos#index' , :as => :videos
+  get '/videos/:id' => 'videos#show', :as => :video
   # Videos Controller Routes #
 
   root 'videos#index'
