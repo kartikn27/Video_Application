@@ -3,6 +3,7 @@
 
 body {
   padding-top: 60px;
+  font-family: Palatino;
 }
 
 section {
@@ -110,4 +111,43 @@ footer ul li {
 .loginUserName{
   color: #ffffff;
   margin-top: 15px;
+}
+
+
+/* Video Index Thumbnail CSS * /
+
+ */
+
+
+.img-responsive{
+  height: 250px;
+  width: 450px;
+  margin-top: 30px;
+}
+
+.PageTitle{
+  text-align: center;
+}
+
+.videoThumbnailGrid{
+  margin-left: 70px;
+}
+
+.videoTitle{
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.loginBtn{
+  margin-top: 20px;
+}
+
+.subscribeBtn{
+  background: #B00100;
+}
+
+.videoTitleSubscribe{
+  font-size: 18px;
+  color: blue;
+  margin-top: 110px;
 }
