@@ -21,10 +21,10 @@ Rails.application.routes.draw do
   # Sessions Controller Routes #
 
   # Videos Controller Routes #
-  get '/videos' => 'vidoes#index' , :as => :videos
+  get '/videos' => 'videos#index' , :as => :videos
   # Videos Controller Routes #
 
-  root 'static_pages#home'
+  root 'videos#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
