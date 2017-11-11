@@ -14,19 +14,17 @@ class VideosController < ApplicationController
   end
 
   def show
-
-    video_url = 'https://api.zype.com/videos/' + params[:id] + '?' + 'app_key=' + I18n.t('app_key')
+    video_url = I18n.t('video_url') + '/' + params[:id] + '?' + 'app_key=' + I18n.t('app_key')
     response = RestClient.get video_url
     response_obj = JSON.parse(response.body)['response']
     @video_info_show = response_obj
 
     @video_id = 'zype' + '_' + @video_info_show['_id']
-    @video_src = 'https://player.zype.com/embed/'+ @video_info_show['_id'] + '.js?autoplay=true&app_key=' + I18n.t('app_key')
+    @video_src = I18n.t('video_player.domain') + @video_info_show['_id'] + I18n.t('video_player.app_key') + I18n.t('app_key')
 
     if @video_info_show['subscription_required'].eql?(true) and current_user_token
-      @video_src_sub = 'https://player.zype.com/embed/'+ @video_info_show['_id'] + '.js?autoplay=true&access_token=' + current_user_token
+      @video_src_sub = I18n.t('video_player.domain') + @video_info_show['_id'] + I18n.t('video_player.access_token') + current_user_token
     end
-
   end
 
 end
