@@ -1,0 +1,21 @@
+<% if @video_info_show['subscription_required'].eql?(false) %>
+    <h1><%= @video_info_show['title'] %></h1>
+    <div id='<%= @video_id %>'></div><script src='<%= @video_src %>' type="text/javascript"></script>
+    <h3>Description</h3>
+    <p><%= @video_info_show['short_description'] %></p>
+<% elsif @video_info_show['subscription_required'].eql?(true) and not current_user_token %>
+    <h2><%= @video_info_show['title'] %></h2>
+    <h5>Description</h5>
+    <p class="videoDesc"><%= @video_info_show['short_description'] %></p>
+    <img src="http://www.pngall.com/wp-content/uploads/2016/03/Subscribe-PNG-3.png">
+    <h1>You have reached a <b class="premium"><i>PREMIUM VIDEO</i></b></h1>
+    <p class="subscribeMsg">To watch this video, subscribe today and get unrestricted access on all your devices.</p>
+    <%= link_to "Log in", login_path, class: 'btn btn-primary subscribeBtn' %>
+    <%= link_to "Subscribe", '', class: 'btn btn-primary subscribeBtn' %>
+<% elsif @video_info_show['subscription_required'].eql?(true) and current_user_token %>
+    <h3 class="userSubcribed">You are subscribed to watch this video</h3>
+    <h1><%= @video_info_show['title'] %></h1>
+    <div id='<%= @video_id %>'></div><script src='<%= @video_src_sub %>' type="text/javascript"></script>
+    <h3>Description</h3>
+    <p><%= @video_info_show['short_description'] %></p>
+<% end %>
