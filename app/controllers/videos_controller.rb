@@ -2,22 +2,31 @@ class VideosController < ApplicationController
 
   def index
     videos_url = I18n.t('video_url') + '?app_key=' + I18n.t('app_key')
-
     response = RestClient.get videos_url
     response_obj = JSON.parse(response.body)
-    @video_info = []
+    @video_info_index = []
     response_obj['response'].each do |video|
-      logger.info(video['thumbnails'][1]['url'])
-      @video_info.push({'id' => video['_id'],
-                        'title' => video['title'],
-                        'thumbnail' => video['thumbnails'][1]['url'],
-                        'subscription_required' => video['subscription_required']})
+      @video_info_index.push({'id' => video['_id'],
+                              'title' => video['title'],
+                              'thumbnail' => video['thumbnails'][1]['url'],
+                              'subscription_required' => video['subscription_required']})
     end
   end
 
   def show
-    @video_id = params[:id]
-    logger.info(@video_id)
+
+    video_url = 'https://api.zype.com/videos/' + params[:id] + '?' + 'app_key=' + I18n.t('app_key')
+    response = RestClient.get video_url
+    response_obj = JSON.parse(response.body)['response']
+    @video_info_show = response_obj
+
+    @video_id = 'zype' + '_' + @video_info_show['_id']
+    @video_src = 'https://player.zype.com/embed/'+ @video_info_show['_id'] + '.js?autoplay=true&app_key=' + I18n.t('app_key')
+
+    if @video_info_show['subscription_required'].eql?(true) and current_user_token
+      @video_src_sub = 'https://player.zype.com/embed/'+ @video_info_show['_id'] + '.js?autoplay=true&access_token=' + current_user_token
+    end
+
   end
 
 end
