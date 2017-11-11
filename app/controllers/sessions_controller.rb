@@ -20,8 +20,8 @@ class SessionsController < ApplicationController
 
   def make_login_request
     login_url = I18n.t('login_url')
-    authentication_payload = {I18n.t('authentication_payload.client_id') => I18n.t('client_id'),
-                              I18n.t('authentication_payload.client_secret') => I18n.t('client_secret'),
+    authentication_payload = {I18n.t('authentication_payload.client_id') => Rails.application.secrets[:client_id],
+                              I18n.t('authentication_payload.client_secret') => Rails.application.secrets[:client_secret],
                               I18n.t('authentication_payload.username') => params[:session][:email],
                               I18n.t('authentication_payload.password') => params[:session][:password],
                               I18n.t('authentication_payload.grant_type') => I18n.t('authentication_payload.password')}
