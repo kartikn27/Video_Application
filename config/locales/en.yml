@@ -50,6 +50,11 @@ en:
 
   app_key: 'XWny5j0V89yb1uZu6SI_D95EADV5FzBYldE9Ny0_q0GOzcWLiruPyhN-f2Pcyohf'
 
+  video_player:
+    domain: 'https://player.zype.com/embed/'
+    app_key: '.js?autoplay=true&app_key='
+    access_token: '.js?autoplay=true&access_token='
+
 
 
 
