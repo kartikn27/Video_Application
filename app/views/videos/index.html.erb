@@ -1,19 +1,27 @@
 <h2 class="PageTitle">Video Gallery</h2>
 <div class=" videoThumbnailGrid">
   <div class="row">
-
     <% @video_info_index.each do |video| %>
         <div class="col-sm-6">
           <div class="card">
             <div class="card-block">
-              <img src='<%= video['thumbnail'] %>' class="img-responsive">
-              <p class="card-text videoTitle"><%= video['title'] %></p>
-              <a><%= link_to 'Watch', video_path(video['id']), :class => "btn btn-primary" %></a>
-              </ul>
+              <a style="display: block">
+                <%= link_to video_path(video['id']) do %>
+                    <img src='<%= video['thumbnail'] %>' class="img-responsive">
+                <% end %>
+                <% if video['subscription_required'] == true %>
+                    <small class="reqSubTxt"><b>This video requires subscription</b></small>
+                <% else %>
+                    <small><b>This video does not require subscription</b></small>
+                <% end %>
+                <%= link_to video_path(video['id']) do %>
+                    <p class="card-text videoTitle"><%= video['title'] %></p>
+                <% end %>
+                <a><%= link_to 'Watch', video_path(video['id']), :class => "btn btn-primary" %></a>
+              </a>
             </div>
           </div>
         </div>
     <% end %>
   </div>
 </div>
-
