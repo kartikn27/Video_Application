@@ -29,14 +29,12 @@ class VideosController < ApplicationController
     videos_url = I18n.t('video_url') + '?app_key=' + Rails.application.secrets[:app_key]
     response = RestClient.get videos_url
     response_obj = JSON.parse(response.body)
-    response_obj
   end
 
   def make_get_video_request
     video_url = I18n.t('video_url') + '/' + params[:id] + '?' + 'app_key=' + Rails.application.secrets[:app_key]
     response = RestClient.get video_url
     response_obj = JSON.parse(response.body)['response']
-    response_obj
   end
 
 end

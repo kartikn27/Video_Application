@@ -1,3 +1,4 @@
+<% provide(:title, @video_info_show['title']) %>
 <% if @video_info_show['subscription_required'].eql?(false) %>
     <h1><%= @video_info_show['title'] %></h1>
     <div id='<%= @video_id %>'></div><script src='<%= @video_src %>' type="text/javascript"></script>
