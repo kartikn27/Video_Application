@@ -20,11 +20,17 @@ module SessionsHelper
   def log_out
     session.delete(:user)
     @current_user = nil
+
+  end
+
+  def log_out_token
+    session.delete(:user_token)
     @current_user_token = nil
   end
 
   def destroy
     log_out
+    log_out_token
     redirect_to root_url
   end
 
