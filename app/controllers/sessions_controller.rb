@@ -14,8 +14,10 @@ class SessionsController < ApplicationController
 
     response = RestClient.post login_url, authentication_payload
 
+    user_obj = JSON.parse(response.body)
+
     if response.code.eql?(200)
-      log_in params[:session][:email]
+      log_in params[:session][:email], user_obj['access_token']
       redirect_to root_path
     else
       format.html { redirect_to '/login', danger: 'Failed to login' }
